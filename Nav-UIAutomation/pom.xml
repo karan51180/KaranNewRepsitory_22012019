@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.optum.navigator</groupId>
+	<artifactId>NavigatorAutomation</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>NavigatorAutomation</name>
+	<description>UI and API Automation for Navigator</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<!-- Dependency versions -->
+		<selenium.version>3.141.59</selenium.version>
+		<testng.version>6.14.3</testng.version>
+		<poi.version>4.0.1</poi.version>
+		<poi-ooxml.version>4.0.1</poi-ooxml.version>
+		<mail.version>1.4.7</mail.version>
+		<log4j.version>1.2.17</log4j.version>
+		<extentreports.version>3.1.5</extentreports.version>
+		<xmlbeans.version>3.0.2</xmlbeans.version>
+		<common-lang.version>2.2</common-lang.version>
+		<json.version>20180130</json.version>
+		<!-- Plugin versions -->
+		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
+		<!-- Configurable variables -->
+		<threads>1</threads>
+		<headless>false</headless>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+				<version>${maven-compiler-plugin.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven-failsafe-plugin.version}</version>
+				<configuration>
+					<parallel>methods</parallel>
+					<threadCount>${threads}</threadCount>
+					<systemPropertyVariables>
+						<headless>${headless}</headless>
+					</systemPropertyVariables>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>${selenium.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>${poi-ooxml.version}</version>
+</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${mail.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aventstack</groupId>
+    		<artifactId>extentreports</artifactId>
+			<version>${extentreports.version}</version>
+		</dependency>
+		
+		<dependency>
+    <groupId>org.apache.xmlbeans</groupId>
+    <artifactId>xmlbeans</artifactId>
+    <version>${xmlbeans.version}</version>
+</dependency>
+		<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>${common-lang.version}</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>${json.version}</version>
+</dependency>
+
+<dependency>
+ <groupId>com.sikulix</groupId>
+ <artifactId>sikulixapi</artifactId>
+ <version>1.1.2</version>
+ <exclusions>
+  <exclusion>
+   <groupId>com.github.vidstige</groupId>
+   <artifactId>jadb</artifactId>
+  </exclusion>
+ </exclusions>
+</dependency>
+
+	</dependencies>
+</project>
